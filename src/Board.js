@@ -79,12 +79,29 @@
     //
     // test if a specific row on this board contains a conflict
     hasRowConflictAt: function(rowIndex) {
-      return false; // fixme
+      let row = this.get(rowIndex);
+      let accumulator = [];
+      row.forEach(function(value){
+        if(value === 1){
+          accumulator.push(value);
+        }
+      });
+      if(accumulator.length > 1){
+        return true;
+      }      
+      return false;
     },
 
     // test if any rows on this board contain conflicts
     hasAnyRowConflicts: function() {
-      return false; // fixme
+      let boardHeight = this.get('n');
+      let conflict = false;
+      for (let i = 0; i < boardHeight; i++) {
+        if (this.hasRowConflictAt(i)) {
+          return true;
+        }  
+      }
+      return false;
     },
 
 
@@ -94,11 +111,29 @@
     //
     // test if a specific column on this board contains a conflict
     hasColConflictAt: function(colIndex) {
+      let boardHeight = this.get('n');
+      let accumulator = [];
+      for(let i = 0; i < boardHeight; i++){
+        let row = this.get(i);
+        if(row[colIndex] === 1){
+          accumulator.push("");
+        }
+      }
+      if(accumulator.length > 1){
+        return true;
+      }
       return false; // fixme
     },
 
     // test if any columns on this board contain conflicts
     hasAnyColConflicts: function() {
+      let size = this.get('n');
+      let conflict = false;
+      for (let i = 0; i < size; i++) {
+        if (this.hasColConflictAt(i)) {
+          return true;
+        }  
+      }
       return false; // fixme
     },
 
@@ -109,6 +144,29 @@
     //
     // test if a specific major diagonal on this board contains a conflict
     hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {
+      // let row = this.get(rowIndex);
+      // let size = this.get('n');
+      // let rows = [];
+      // for(let i = rowIndex; i < size; i++) {
+      //   rows.push(this.get(i));
+      // }
+      // row.forEach(function(value, index ) {
+      //   let accumulator = [];
+      //   let startPoint = index + 1;
+      //   if (value === 1) {
+      //     for (let i = rowIndex + 1; i < size; i++) {
+      //       let nextRow = rows[i];
+      //       if (nextRow[startPoint] === 1) {
+      //         accumulator.push('');
+      //       }
+      //       startPoint++;
+      //     }
+      //   }
+      //   if (accumulator.length > 1) {
+      //     return true;
+      //   }
+      // });
+      
       return false; // fixme
     },
 
