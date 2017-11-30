@@ -61,6 +61,14 @@
       );
     },
     
+    getMatrix: function() {
+      let n = this.get('n');
+      let arr = [];
+      for(var i = 0; i < n; i++){
+        console.log(this.get(i));
+      }
+    },    
+    
 
 
 /*
@@ -233,7 +241,7 @@
     // test if any minor diagonals on this board contain conflicts
     hasAnyMinorDiagonalConflicts: function() {
       let size = this.get('n');
-      for (let i = 1; i < size + 2; i++) {
+      for (let i = 1; i < size * 2 -1; i++) {
         if (this.hasMinorDiagonalConflictAt(i)) {
           return true;
         }
